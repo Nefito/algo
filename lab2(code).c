@@ -23,13 +23,12 @@ int main()
     {
         printf("Enter the element %d for the array: ", i);
         scanf("%s", &arr1[i]);
-
+        
         while( arr1[i] < 'a' || arr1[i] > 'z')
         {
             printf("Enter a lowercase character: ");
             scanf("%s", &arr1[i]);
         }
-
     }
 
     printf("Your array is:{ ");
