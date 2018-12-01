@@ -1,5 +1,22 @@
 #include <stdio.h>
+#include <math.h>
 
+int fact(int n)
+{
+    if(n == 0 || n == 1)
+    {
+        return 1;
+    }
+    else
+    {
+        return n*fact(n-1);
+    }
+}
+
+int F(int k, int l)
+{
+    return fact(k)/(fact(l)*fact(k-l));
+}
 void swap(int *x, int *y)
 {
     int temp;
@@ -52,7 +69,7 @@ void lexSwap(int len, int a[])
 
 int main()
 {
-    int len1 = 4, len2 = 5, len3 = 5, len4 = 5, len5 = 7, len6 = 8;
+    int len1 = 4, len2 = 5, len3 = 5, len4 = 5, len5 = 7, len6 = 8, n = 8, result = 0, m, j, i, x, y;
     int a1[] = {1, 4, 3, 2};
     int a2[] = {5, 4, 1, 2, 3};
     int a3[] = {1, 2, 4, 5, 3};
@@ -104,40 +121,54 @@ int main()
     lexSwap(len6, a6);
 
     printf("The next lexographic permutation for set 1 is:\n");
-    for(int i = 0; i < len1; i++)
+    for(i = 0; i < len1; i++)
     {
         printf(" %d ", a1[i]);
     }printf("\n");
 
     printf("The next lexographic permutation for set 2 is:\n");
-    for(int i = 0; i < len2; i++)
+    for(i = 0; i < len2; i++)
     {
         printf(" %d ", a2[i]);
     }printf("\n");
 
     printf("The next lexographic permutation for set 3 is:\n");
-    for(int i = 0; i < len3; i++)
+    for(i = 0; i < len3; i++)
     {
         printf(" %d ", a3[i]);
     }printf("\n");
 
     printf("The next lexographic permutation for set 4 is:\n");
-    for(int i = 0; i < len4; i++)
+    for(i = 0; i < len4; i++)
     {
         printf(" %d ", a4[i]);
     }printf("\n");
 
     printf("The next lexographic permutation for set 5 is:\n");
-    for(int i = 0; i < len5; i++)
+    for(i = 0; i < len5; i++)
     {
         printf(" %d ", a5[i]);
     }printf("\n");
 
     printf("The next lexographic permutation for set 6 is:\n");
-    for(int i = 0; i < len6; i++)
+    for(i = 0; i < len6; i++)
     {
         printf(" %d ", a6[i]);
     }printf("\n");
+
+    //this is for the binominal theorem
+    printf("Enter a value for x: \n");
+    scanf("%d", &x);
+
+    printf("Enter a value for y: \n");
+    scanf("%d", &y);
+    y *= -1;
+
+    for(j = 0, m = n, i = 0; i <= n; i++, m--, j++)
+    {
+        result += F(n, j)*pow(x, m)*pow(y, j);
+    }
+    printf("(%d%d)^8 = %d\n", x, y, result);
 
     return 0;
 }
